@@ -2,8 +2,9 @@
   "name": "nodejs-mocha-chai",
   "version": "1.0.0",
   "description": "nodejs mocha chai testing",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node ./server.js",
     "test": "mocha --reporter spec",
     "lint": "eslint ./app/*.js ./test/*.js --ext .js --config .eslintrc.json",
     "lintfix": "eslint ./app/*.js ./test/*.js --ext .js --config .eslintrc.json --fix"

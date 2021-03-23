@@ -1,0 +1,1 @@
+GET http://localhost:3000/rgbToHex?red=255&green=255&blue=255 HTTP/1.1

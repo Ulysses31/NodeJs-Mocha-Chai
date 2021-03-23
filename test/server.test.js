@@ -1,8 +1,11 @@
 var expect = require('chai').expect;
 var request = require('request');
 
-const url =
+const rgbToHexUrl =
   'http://localhost:3000/rgbToHex?red=255&green=255&blue=255';
+
+var hexToRgbUrl =
+  'http://localhost:3000/hexToRgb?hex=00ff00';
 
 /**
  * [description]
@@ -16,14 +19,27 @@ describe('Color Code Converter API', function () {
    * @return {[type]}   [description]
    */
   describe('RGB to Hex conversion', function () {
-    it('returns status 200', function () {
-      request(url, function (error, response, body) {
-        expect(response.statusCode).to.equal(200);
-        expect(error).to.equal(null);
-      });
+    it('returns status 200', function (done) {
+      request(
+        rgbToHexUrl,
+        function (error, response, body) {
+          expect(response.statusCode).to.equal(200);
+          expect(error).to.equal(null);
+          done();
+        }
+      );
     });
-    it('returns the color in hex', function () {
-      expect(response).to.not.equal(null);
+
+    it('returns the color in hex', function (done) {
+      request(
+        rgbToHexUrl,
+        function (error, response, body) {
+          expect(body).to.not.be.a('null');
+          expect(body).to.equal('ffffff');
+          expect(error).to.equal(null);
+          done();
+        }
+      );
     });
   });
 
@@ -33,14 +49,27 @@ describe('Color Code Converter API', function () {
    * @return {[type]}   [description]
    */
   describe('Hex to RGB conversion', function () {
-    it('returns status 200', function () {
-      request(url, function (error, response, body) {
-        expect(response.statusCode).to.equal(200);
-        expect(error).to.equal(null);
-      });
+    it('returns status 200', function (done) {
+      request(
+        hexToRgbUrl,
+        function (error, response, body) {
+          expect(response.statusCode).to.equal(200);
+          expect(error).to.equal(null);
+          done();
+        }
+      );
     });
-    it('returns the color in RGB', function () {
-      expect(response).to.not.equal(null);
+
+    it('returns the color in RGB', function (done) {
+      request(
+        hexToRgbUrl,
+        function (error, response, body) {
+          expect(body).to.not.be.a('null');
+          expect(error).to.equal(null);
+          expect(body).to.equal('[0,255,0]');
+          done();
+        }
+      );
     });
   });
 });

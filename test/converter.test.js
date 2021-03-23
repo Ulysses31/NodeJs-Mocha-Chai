@@ -3,13 +3,13 @@ var converter = require('../app/converter');
 
 /**
  * [description]
- * @param  {[type]} ) {describe('RGB to Hex conversion', function () {    it('converts the basic colors', function () {      var redHex [description]
+ * @param  {[type]} ) {describe('RGB to Hex conversion', function () {it('converts the basic colors', function () {      var redHex [description]
  * @return {[type]}   [description]
  */
 describe('Color Code Converter', function () {
   /**
    * [description]
-   * @param  {[type]} ) {it('converts the basic colors', function () {      var redHex [description]
+   * @param  {[type]} ) {it('converts the basic colors', function () {var redHex [description]
    * @return {[type]}   [description]
    */
   describe('RGB to Hex conversion', function () {
@@ -26,7 +26,7 @@ describe('Color Code Converter', function () {
 
   /**
    * [description];
-   * @param  {[type]} ) {it('converts the basic colors', function () {      var red [description]
+   * @param  {[type]} ) {it('converts the basic colors', function () {var red [description]
    * @return {[type]}   [description]
    */
   describe('Hex to RGB conversion', function () {
