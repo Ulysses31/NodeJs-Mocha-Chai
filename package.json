@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node ./server.js",
-    "test": "mocha --reporter spec",
+    "test": "mocha --reporter spec --exit",
     "lint": "eslint ./app/*.js ./test/*.js --ext .js --config .eslintrc.json",
     "lintfix": "eslint ./app/*.js ./test/*.js --ext .js --config .eslintrc.json --fix"
   },
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "express": "^4.17.1",
     "mocha": "^8.3.2",
     "request": "^2.88.2"

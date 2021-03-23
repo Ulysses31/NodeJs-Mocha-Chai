@@ -44,6 +44,8 @@ app.get('/hexToRgb', function (req, res) {
   res.send(JSON.stringify(rgb));
 });
 
-app.listen(3000, () => {
-  console.log(`Server started at http://localhost:3000`);
-})
+app.listen(5000, 'localhost', () => {
+  console.log(`Server started at http://localhost:5000`);
+});
+
+module.exports = app; // for testing

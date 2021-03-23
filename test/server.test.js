@@ -1,11 +1,17 @@
+process.env.NODE_ENV = 'test';
+
+var chai = require('chai');
+var chaiHttp = require('chai-http');
 var expect = require('chai').expect;
 var request = require('request');
+var server = require('../server');
+var should = chai.should();
 
-const rgbToHexUrl =
-  'http://localhost:3000/rgbToHex?red=255&green=255&blue=255';
+const rgbToHexUrl = '/rgbToHex?red=255&green=255&blue=255';
 
-var hexToRgbUrl =
-  'http://localhost:3000/hexToRgb?hex=00ff00';
+var hexToRgbUrl = '/hexToRgb?hex=00ff00';
+
+chai.use(chaiHttp);
 
 /**
  * [description]
@@ -20,26 +26,33 @@ describe('Color Code Converter API', function () {
    */
   describe('RGB to Hex conversion', function () {
     it('returns status 200', function (done) {
-      request(
-        rgbToHexUrl,
-        function (error, response, body) {
-          expect(response.statusCode).to.equal(200);
-          expect(error).to.equal(null);
-          done();
-        }
-      );
+      chai
+        .request(server)
+        .get(rgbToHexUrl)
+        .end((err, res, body) => {
+          if (err) {
+            done(err);
+          } else {
+            expect(err).to.equal(null);
+            expect(res.statusCode).to.equal(200);
+            done();
+          }
+        });
     });
 
     it('returns the color in hex', function (done) {
-      request(
-        rgbToHexUrl,
-        function (error, response, body) {
-          expect(body).to.not.be.a('null');
-          expect(body).to.equal('ffffff');
-          expect(error).to.equal(null);
-          done();
-        }
-      );
+      chai
+        .request(server)
+        .get(rgbToHexUrl)
+        .end((err, res, body) => {
+          if (err) {
+            done(err);
+          } else {
+            expect(err).to.equal(null);
+            expect(res.text).to.equal('ffffff');
+            done();
+          }
+        });
     });
   });
 
@@ -50,26 +63,33 @@ describe('Color Code Converter API', function () {
    */
   describe('Hex to RGB conversion', function () {
     it('returns status 200', function (done) {
-      request(
-        hexToRgbUrl,
-        function (error, response, body) {
-          expect(response.statusCode).to.equal(200);
-          expect(error).to.equal(null);
-          done();
-        }
-      );
+      chai
+        .request(server)
+        .get(hexToRgbUrl)
+        .end((err, res, body) => {
+          if (err) {
+            done(err);
+          } else {
+            expect(err).to.equal(null);
+            expect(res.statusCode).to.equal(200);
+            done();
+          }
+        });
     });
 
     it('returns the color in RGB', function (done) {
-      request(
-        hexToRgbUrl,
-        function (error, response, body) {
-          expect(body).to.not.be.a('null');
-          expect(error).to.equal(null);
-          expect(body).to.equal('[0,255,0]');
-          done();
-        }
-      );
+      chai
+        .request(server)
+        .get(hexToRgbUrl)
+        .end((err, res, body) => {
+          if (err) {
+            done(err);
+          } else {
+            expect(err).to.equal(null);
+            expect(res.text).to.equal('[0,255,0]');
+            done();
+          }
+        });
     });
   });
 });
