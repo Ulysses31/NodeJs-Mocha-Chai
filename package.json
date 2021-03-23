@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-mocha-chai",
+  "version": "1.0.0",
+  "description": "nodejs mocha chai testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "lint": "eslint ./app/*.js ./test/*.js --ext .js --config .eslintrc.json",
+    "lintfix": "eslint ./app/*.js ./test/*.js --ext .js --config .eslintrc.json --fix"
+  },
+  "author": "Iordanidis Chris",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "express": "^4.17.1",
+    "mocha": "^8.3.2",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-nodejs": "^0.0.1",
+    "eslint-plugin-promise": "^4.3.1"
+  }
+}
